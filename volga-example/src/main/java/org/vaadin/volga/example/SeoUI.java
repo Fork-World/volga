@@ -1,15 +1,16 @@
 package org.vaadin.volga.example;
 
-import com.github.wolfie.history.PushStateLink;
-import com.vaadin.annotations.Theme;
-import com.vaadin.annotations.Title;
-import com.vaadin.annotations.Widgetset;
-import com.vaadin.navigator.View;
-import com.vaadin.server.VaadinRequest;
-import com.vaadin.ui.ComponentContainer;
 import org.vaadin.viritin.layouts.MHorizontalLayout;
 import org.vaadin.viritin.layouts.MVerticalLayout;
 import org.vaadin.volga.VolgaUI;
+
+import com.vaadin.annotations.Theme;
+import com.vaadin.annotations.Title;
+import com.vaadin.annotations.Widgetset;
+import com.vaadin.navigator.Navigator;
+import com.vaadin.navigator.View;
+import com.vaadin.server.VaadinRequest;
+import com.vaadin.ui.ComponentContainer;
 
 /**
  * This UI is the application entry point. A UI may either represent a browser
@@ -29,6 +30,7 @@ public class SeoUI extends VolgaUI {
 
     @Override
     protected void doInit(VaadinRequest vaadinRequest) {
+      Navigator navigator = new Navigator(this, this);
         MVerticalLayout main = new MVerticalLayout(new Menu(), layout);
         setContent(main);
     }
@@ -46,8 +48,7 @@ public class SeoUI extends VolgaUI {
         }
 
         private void addView(Class<? extends View> view, String path) {
-            PushStateLink link = new PushStateLink(view.getSimpleName(), path);
-            add(link);
+
             getNavigator().addView(path, view);
         }
     }

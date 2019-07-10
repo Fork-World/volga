@@ -3,8 +3,8 @@ package org.vaadin.it;
 import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.vaadin.addonhelpers.automated.VaadinConditions;
 import org.vaadin.BasicUsageUI;
+import org.vaadin.addonhelpers.automated.VaadinConditions;
 
 /**
  * A simple example that uses Selenium to do a browser level test for a
@@ -22,12 +22,13 @@ public class BasicIT extends AbstractWDIT {
                 BASEURL + BasicUsageUI.class.getName());
 
         // Consider using Vaadin TestBench to make stuff easier
-        new WebDriverWait(driver, 30).until(VaadinConditions.ajaxCallsCompleted());
+      new WebDriverWait(driver, 30)
+            .until(VaadinConditions::ajaxCallsCompleted);
 
         String pageSource = driver.getPageSource();
 
         verifyTwitterStuffOnPage(pageSource);
-        
+
     }
 
     protected void verifyTwitterStuffOnPage(String pageSource) {

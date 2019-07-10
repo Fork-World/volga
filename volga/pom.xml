@@ -18,7 +18,7 @@
     </organization>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <vaadin.version>7.7.0.rc1</vaadin.version>
+        <vaadin.version>8.6.4</vaadin.version>
         <vaadin.plugin.version>${vaadin.version}</vaadin.plugin.version>
         <!-- ZIP Manifest fields -->
         <Implementation-Version>${project.version}</Implementation-Version>
@@ -50,12 +50,7 @@
             <groupId>com.vaadin</groupId>
             <artifactId>vaadin-server</artifactId>
             <version>${vaadin.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.vaadin.addons</groupId>
-            <artifactId>history</artifactId>
-            <version>1.2.0</version>
-        </dependency>
+        </dependency>       
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
@@ -65,7 +60,7 @@
         <dependency>
             <groupId>org.vaadin</groupId>
             <artifactId>addon-test-helpers</artifactId>
-            <version>1.10</version>
+            <version>2.1</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -90,6 +85,25 @@
     
     <build>
         <plugins>
+			<plugin>
+				<groupId>com.github.webdriverextensions</groupId>
+				<artifactId>webdriverextensions-maven-plugin</artifactId>
+				<version>3.2.0</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>install-drivers</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<drivers>
+						<driver>
+							<name>geckodriver</name>
+						</driver>
+					</drivers>
+				</configuration>
+			</plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
